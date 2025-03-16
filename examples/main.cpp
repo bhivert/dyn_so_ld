@@ -26,7 +26,7 @@
 * from copyright holders.
 *
 * Created on 2019/01/31 at 19:37:13 by Benoit Hivert <hivert.benoit@gmail.com>
-* Updated on 2025/03/16 at 18:58:48 by Benoit Hivert <hivert.benoit@gmail.com>
+* Updated on 2025/03/16 at 19:36:48 by Benoit Hivert <hivert.benoit@gmail.com>
 */
 
 /*!
@@ -56,7 +56,7 @@ int	main(void) {
 		}
 		std::cout << ']' << std::endl;
 	while (++i < 20000) {
-		dyn::loader< test_interface >	ld(_libs);
+		dyn::loader< test_interface >	ld(_libs, dyn::oflag::LAZY | dyn::oflag::LOCAL);
 
 		std::vector<dyn::so<test_interface>>	interfaces({
 				ld.new_object("./riri.so"),

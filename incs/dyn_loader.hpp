@@ -26,7 +26,7 @@
 * from copyright holders.
 *
 * Created on 2019/01/31 at 19:37:39 by Benoit Hivert <hivert.benoit@gmail.com>
-* Updated on 2025/03/16 at 18:58:04 by Benoit Hivert <hivert.benoit@gmail.com>
+* Updated on 2025/03/16 at 19:37:35 by Benoit Hivert <hivert.benoit@gmail.com>
 */
 
 #ifndef __DYN_LOADER_HPP__
@@ -48,7 +48,7 @@
 
 namespace dyn {
 
-	enum class oflag {
+	enum class oflag : int {
 		LAZY		= RTLD_LAZY,
 		NOW			= RTLD_NOW,
 		GLOBAL		= RTLD_GLOBAL,
@@ -56,6 +56,10 @@ namespace dyn {
 		NODELETE	= RTLD_NODELETE,
 		NOLOAD		= RTLD_NOLOAD,
 		DEEPBIND	= RTLD_DEEPBIND
+	};
+
+	oflag	operator|(const oflag &lhs, const oflag &rhs) {
+		return static_cast<oflag>(static_cast<int>(lhs) | static_cast<int>(rhs));
 	};
 
 	template <class I>
